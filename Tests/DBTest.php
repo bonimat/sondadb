@@ -8,15 +8,15 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once('sonda.php');
 
 class DBTest extends TestCase
 {
     function testDB(){
         $database = new DB('localhost','root','bonimat');
-        $response = $database->select("SELECT 1 FROM DUAL");
+        $query= "SELECT 1 FROM DUAL";
+        $response = $database->select($query);
 
-        $this->assertEquals(1,$response);
+        $this->assertEquals(1,$response->num_rows);
 
     }
 
